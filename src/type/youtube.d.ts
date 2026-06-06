@@ -8,12 +8,16 @@ declare namespace YT {
     constructor(el: string | HTMLElement, options: PlayerOptions);
     playVideo(): void;
     pauseVideo(): void;
+    getCurrentTime(): number;
+    getDuration(): number;
+    seekTo(seconds: number, allowSeekAhead?: boolean): void;
+    destroy(): void;
   }
   interface PlayerOptions {
     videoId: string;
     playerVars?: Record<string, unknown>;
     events?: {
-      onReady?: () => void;
+      onReady?: (event: { target: Player }) => void;
       onStateChange?: (e: { data: number }) => void;
     };
   }

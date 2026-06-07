@@ -46,12 +46,12 @@ const SHOP_TYPES: ShopType[] = [
 ];
 
 const features = [
-  { icon: Package,   title: "Smart Inventory",  desc: "Track products with real-time quantities, low-stock alerts, and Ethiopian date tracking." },
+  { icon: Package,   title: "Smart Inventory",       desc: "Track products with real-time quantities, low-stock alerts, and Ethiopian date tracking." },
   { icon: QrCode,    title: "QR / Barcode Scanning", desc: "Generate QR codes for every item. Scan instantly on any device to process sales in under a second." },
-  { icon: Building2, title: "Multi-Branch",     desc: "Manage unlimited branches, transfer stock, and track performance per location." },
-  { icon: BarChart3, title: "Rich Analytics",   desc: "Revenue charts in Amharic months, fast-moving products, financial summaries, and date filters." },
-  { icon: Users,     title: "Team & Roles",     desc: "Owner, Admin, and Salesperson roles with granular permission control." },
-  { icon: Shield,    title: "Full Audit Trail", desc: "Every sale and transfer logged. Filter by date, category, payment type, or status." },
+  { icon: Building2, title: "Multi-Branch",           desc: "Manage unlimited branches, transfer stock, and track performance per location." },
+  { icon: BarChart3, title: "Rich Analytics",         desc: "Revenue charts in Amharic months, fast-moving products, financial summaries, and date filters." },
+  { icon: Users,     title: "Team & Roles",           desc: "Owner, Admin, and Salesperson roles with granular permission control." },
+  { icon: Shield,    title: "Full Audit Trail",       desc: "Every sale and transfer logged. Filter by date, category, payment type, or status." },
 ];
 
 const COMMISSION    = 500;
@@ -224,7 +224,6 @@ function AgentRegistersShops() {
   ];
 
   const currentShop = shops[shopIdx];
-
   const agentVisible = phase !== "entering" && phase !== "registering" && phase !== "paying";
   const agentLeft    = phase === "exiting" ? "88%" : "12%";
 
@@ -379,7 +378,6 @@ function AgentRegistersShops() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 140, damping: 16 }}
           >
-            {/* Confetti */}
             {Array.from({ length: 18 }).map((_, i) => (
               <motion.span
                 key={i}
@@ -491,6 +489,7 @@ function Index() {
             <a href="#training" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">Training</a>
             <a href="#contact"  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">Contact</a>
           </nav>
+          {/* ✅ Points to #register — scrolls to the registration form */}
           <a href="#register" className="group inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-card transition-all duration-300 hover:bg-accent hover:shadow-glow">
             Join Now
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -527,6 +526,7 @@ function Index() {
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3}
             className="mt-8 flex flex-wrap items-center justify-center gap-3"
           >
+            {/* ✅ Also points to #register */}
             <a href="#register" className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-all duration-300 hover:-translate-y-0.5">
               Become a Sales Agent
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -611,8 +611,8 @@ function Index() {
       {/* Agent demo */}
       <AgentRegistersShops />
 
-      {/* Register */}
-      <section id="register" className="relative px-6 py-6 md:py-24">
+      {/* ✅ Register — id="register" so all #register links scroll here */}
+      <section id="contact" className="relative px-6 py-6 md:py-24">
         <div className="mx-auto max-w-4xl">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}
             className="mx-auto max-w-2xl text-center"
@@ -630,7 +630,7 @@ function Index() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative px-6 py-6 md:py-20">
+      <section className="relative px-6 py-6 md:py-20">
         <div className="mx-auto max-w-5xl">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
             className="grid gap-6 rounded-3xl bg-surface p-8 shadow-card ring-1 ring-border md:grid-cols-2 md:p-12"
@@ -641,9 +641,9 @@ function Index() {
             </div>
             <div className="space-y-4">
               {[
-                { href: "tel:+251913020845",         Icon: Phone, label: "Phone", value: "0913 020 845" },
-                { href: "https://medebir.business",  Icon: Globe, label: "Visit", value: "medebir.business", external: true },
-                { href: "mailto:info.medebir@gmail.com", Icon: Mail, label: "Email", value: "info.medebir@gmail.com" },
+                { href: "tel:+251913020845",              Icon: Phone, label: "Phone", value: "0913 020 845" },
+                { href: "https://medebir.business",       Icon: Globe, label: "Visit", value: "medebir.business", external: true },
+                { href: "mailto:info.medebir@gmail.com",  Icon: Mail,  label: "Email", value: "info.medebir@gmail.com" },
               ].map(({ href, Icon, label, value, external }) => (
                 <a key={label} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="group flex items-center gap-4 rounded-2xl bg-secondary p-4 transition-all duration-300 hover:bg-secondary/70 hover:translate-x-1"
